@@ -574,11 +574,13 @@ Auth.prototype.register = function (data) {
 };
 
 Auth.prototype.login = function (data) {
+    console.log("LOGIN 1")
     data = __utils.extend(__auth.options.loginData, data);
 
     _setRemember(data.remember);
     _setStaySignedIn(data.staySignedIn);
-
+    
+    console.log("LOGIN BEFOR PROMISE")
     return new Promise(function(resolve, reject) {
         __auth.drivers.http.http
             .call(__auth, data)
@@ -587,6 +589,8 @@ Auth.prototype.login = function (data) {
                     data.fetchUser ||
                     (data.fetchUser === undefined && __auth.options.fetchData.enabled)
                 ) {
+                    
+                    console.log("LOGIN THEN FETCH CONDITION")
                     __auth
                         .fetch({
                             redirect: data.redirect
@@ -594,6 +598,8 @@ Auth.prototype.login = function (data) {
                         .then(resolve, reject);
                 }
                 else {
+                    
+                    console.log("LOGIN ELSE FETCH CONDITION")
                     _processFetch(_parseUserResponseData(res), data.redirect);
 
                     resolve(res);
