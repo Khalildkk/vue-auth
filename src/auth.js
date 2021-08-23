@@ -525,7 +525,7 @@ Auth.prototype.token = function (name, token, expires) {
 
 Auth.prototype.fetch = function (data) {
     data = __utils.extend(__auth.options.fetchData, data);
-
+    console.log("INSIDE FETCH");
     return new Promise(function(resolve, reject) {
         __auth.drivers.http.http
             .call(__auth, data)
