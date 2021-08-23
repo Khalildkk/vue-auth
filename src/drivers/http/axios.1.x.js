@@ -1,12 +1,14 @@
 export default {
 
     init: function () {
+        console.log("http 1")
         if ( ! this.plugins.http) {
             return 'drivers/http/axios.js: http plugin has not been set.'
         }
     },
 
     interceptor: function (req, res) {
+        console.log("http 2")
         var _this = this;
 
         if (req) {
@@ -37,12 +39,14 @@ export default {
     },
 
     invalidToken: function (res) {
+        console.log("http 3")
         if (res.status === 401) {
             return true;
         }
     },
 
     httpData: function (res) {
+        console.log("http data: " + res.data)
         return res.data || {};
     },
 
@@ -51,10 +55,12 @@ export default {
     },
 
     getHeaders: function (res) {
+        console.log("http getHeader: " + res.headers)
         return res.headers;
     },
 
     setHeaders: function (req, headers) {
+        console.log("http setHeaders")
         req.headers.common = Object.assign({}, req.headers.common, headers);
     }
 }
