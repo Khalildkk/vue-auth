@@ -18,8 +18,6 @@ export default {
         
         if (token) {
             token = token.split(/Bearer:?\s?/i);
-        else
-            console.log("NO TOKEN")
             
             return token[token.length > 1 ? 1 : 0].trim();
         }
