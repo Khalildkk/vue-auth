@@ -47,17 +47,14 @@ export default {
     },
 
     http: function (data) {
-        console.log("HTTP HTTP : " + JSON.stringify(data))
         return this.plugins.http(data);
     },
 
     getHeaders: function (res) {
-        console.log("HTTP HEADERS : " + JSON.stringify(res.headers))
         return res.headers;
     },
 
     setHeaders: function (req, headers) {
-        console.log("HTTP SET HEADERS : " + JSON.stringify(headers))
         req.headers.common = Object.assign({}, req.headers.common, headers);
     }
 }
