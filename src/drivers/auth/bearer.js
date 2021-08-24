@@ -3,9 +3,10 @@ export default {
     request: function (req, token) {
         console.log("FUNCTION: request");
         this.drivers.http.setHeaders.call(this, req, {
-            console.log("INSIDE drivers.http.setHeaders, token="+token)
             Authorization: 'Bearer ' + token
         });
+        
+        console.log("AFTER drivers.http.setHeaders, token="+token)
     },
 
     response: function (res) {
